@@ -3,12 +3,15 @@ const express = require('express');
 const path = require('path');
 const {engine} = require('express-edge');
 
+const mongoose = require('mongoose');
 const app = new express();
 
 app.use(express.static('public'));
 app.use(engine);
 
 app.set('views',`${__dirname}/views`);
+
+mongoose.connect("mongodb://localhost/node-js-blog");
 
 app.get('/', (req, res) => {
 
