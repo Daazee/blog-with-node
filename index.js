@@ -4,12 +4,19 @@ const path = require('path');
 const {engine} = require('express-edge');
 
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const Post = require('./database/models/Post');
+
+
 const app = new express();
 
 app.use(express.static('public'));
 app.use(engine);
 
 app.set('views',`${__dirname}/views`);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}))
 
 mongoose.connect("mongodb://localhost/node-js-blog");
 
@@ -45,9 +52,12 @@ app.get('/posts/new', (req, res) => {
 })
 
 app.post('/posts/store', (req, res) => {
+    console.log(req.body);
 
-    // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
-    res.redirect('/');
+    Post.create(req.body, (error, response) => {
+
+        res.redirect('/');
+    })
 })
 
 app.listen(4000, (req, res)=> {
