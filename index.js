@@ -38,6 +38,11 @@ app.get('/post', (req, res) => {
     res.render('post');
 })
 
+app.get('/posts/new', (req, res) => {
+
+    // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
+    res.render('create');
+})
 
 app.listen(4000, (req, res)=> {
     console.log("App is listening on port 4000");
