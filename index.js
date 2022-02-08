@@ -41,7 +41,13 @@ app.get('/post', (req, res) => {
 app.get('/posts/new', (req, res) => {
 
     // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
-    res.render('create');
+    res.render  ('create');
+})
+
+app.post('/posts/store', (req, res) => {
+
+    // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
+    res.redirect('/');
 })
 
 app.listen(4000, (req, res)=> {
