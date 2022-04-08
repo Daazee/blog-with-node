@@ -65,6 +65,6 @@ app.post('/posts/store', (req, res) => {
     })
 })
 
-app.listen(4000, (req, res) => {
-    console.log("App is listening on port 4000");
+app.listen(5000, (req, res) => {
+    console.log("App is listening on port 5000");
 })
