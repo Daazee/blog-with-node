@@ -6,7 +6,7 @@ const { engine } = require('express-edge');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Post = require('./database/models/Post');
-
+const PORT = process.env.PORT || 5000
 
 const app = new express();
 
@@ -65,6 +65,6 @@ app.post('/posts/store', (req, res) => {
     })
 })
 
-app.listen(5000, (req, res) => {
-    console.log("App is listening on port 5000");
+app.listen(PORT, (req, res) => {
+    console.log("App is listening on port " +   PORT);
 })
