@@ -18,7 +18,7 @@ app.set('views', `${__dirname}/views`);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
-mongoose.connect("mongodb://localhost/node-js-blog");
+/*mongoose.connect("mongodb://localhost/node-js-blog");*/
 
 app.get('/', async (req, res) => {
 
