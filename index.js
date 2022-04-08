@@ -23,9 +23,10 @@ mongoose.connect("mongodb://localhost/node-js-blog");
 app.get('/', async (req, res) => {
 
     //res.sendFile(path.resolve(__dirname, 'pages/index.html')); //initial way without rendering
-    const posts = await Post.find({});
+  
+  /*  const posts = await Post.find({});
     console.log("retrieved post => "+ posts);
-    res.render('index', { posts:posts });
+    res.render('index', { posts:posts });*/
 })
 
 app.get('/about', (req, res) => {
