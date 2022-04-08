@@ -1,7 +1,7 @@
 
 const express = require('express');
 const path = require('path');
-const {engine} = require('express-edge');
+const { engine } = require('express-edge');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -13,17 +13,19 @@ const app = new express();
 app.use(express.static('public'));
 app.use(engine);
 
-app.set('views',`${__dirname}/views`);
+app.set('views', `${__dirname}/views`);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 mongoose.connect("mongodb://localhost/node-js-blog");
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
 
     //res.sendFile(path.resolve(__dirname, 'pages/index.html')); //initial way without rendering
-    res.render('index');
+    const posts = await Post.find({});
+    console.log("retrieved post => "+ posts);
+    res.render('index', { posts:posts });
 })
 
 app.get('/about', (req, res) => {
@@ -48,7 +50,7 @@ app.get('/post', (req, res) => {
 app.get('/posts/new', (req, res) => {
 
     // res.sendFile(path.resolve(__dirname, 'pages/post.html'));
-    res.render  ('create');
+    res.render('create');
 })
 
 app.post('/posts/store', (req, res) => {
@@ -60,6 +62,6 @@ app.post('/posts/store', (req, res) => {
     })
 })
 
-app.listen(4000, (req, res)=> {
+app.listen(4000, (req, res) => {
     console.log("App is listening on port 4000");
 })
