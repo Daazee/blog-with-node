@@ -27,6 +27,8 @@ app.get('/', async (req, res) => {
   /*  const posts = await Post.find({});
     console.log("retrieved post => "+ posts);
     res.render('index', { posts:posts });*/
+    res.render('index');
+    
 })
 
 app.get('/about', (req, res) => {
